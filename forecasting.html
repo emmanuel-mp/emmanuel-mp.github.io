@@ -1,0 +1,277 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>Forecasting ML</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+								<header id="header">
+									<a href="index.html" class="logo"><strong>Emmanuel Anios Fils MOMPREMIER</strong></a>
+									
+							
+									<ul class="icons">
+
+										<li><a href="generic.html" class="logo"><strong>About      </strong></a></li>
+										<li><a href="index.html#project" class="logo"><strong>Projects      </strong></a></li>
+										<li><a href="resume.html" class="logo"><strong>Resume </strong></a></li>
+										<li><a href="other.html" class="logo"><strong>Other </strong></a></li>
+
+										<li><a href="#" class="logo"><strong>         </strong></a></li>
+										<li><a href= "mailto: eaniosfils21@gmail.com" class="icon communication fas fa-envelope-square"><span class="fa-envelope"></span></a></li>
+
+										<li><a href="https://www.linkedin.com/in/emmanuelafmompremier/" class="icon brands fa-linkedin"><span class="label">Linkedin</span></a></li>
+										<li><a href="https://github.com/emmanuel-mp" class="icon brands fa-github"><span class="label">Github</span></a></li>
+										<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+									
+									</ul>
+
+
+								</header>
+
+
+
+
+
+
+							<!-- Content -->
+								<section>
+									<header class="main">
+										<h2 class="center">Microgrids: Point & Quantile PV Generation Forecasts</h2>
+									</header>
+
+
+
+
+									<ul> 
+										<li><strong>Scope:</strong> 1 month</li>
+										<li><strong>Keywords:</strong> Weather Forecasts, Point & Quantile Forecasting, Verification (MAE, RMSE), Machine Learning Models, Time Series, Data Analysis & Modeling</li>
+										<li><strong>Tools:</strong> Python, Sklearn, Numpy, Pandas, Matplotlib </li>
+										<li><strong>Other Contributors:</strong> O. Olugbayila, Y. Li </li>
+										<li><strong>Links:</strong> <a href="#"> [Github]</a> <a href="#"> [PDF]</a> </li>
+										
+									</ul>
+
+
+									<span class="center">
+										<img src="images/forecasting4.png" width="600" height="300"/> <!-- alt="" --> 
+									</span>
+
+
+
+									
+									<h1></h1>
+									<p></p>
+									<p></p>
+
+									<hr class="major" />
+
+
+									<h2>The Problem</h2>
+
+
+									<div > 
+
+									
+
+									<p> 
+										Using PV generation data from a 2500 meter square solar power plant installed on campus du Sart
+                                        Tilman at Université de Liege (Belgium), we aim to develop machine learning models capable of forecasting future PV generation scenarios given new weather situations.
+
+                                        <br> The PV generation plant in this case study has an installed capacity of 466.4 kW. 
+                                        Furtherore, the PV generation has been monitored on a minute basis from April 4, 2020 to September 14, 2020, 157 days in total, and the data is resampled to 15 minutes.
+                                        
+                                 
+									</p>
+
+
+									<span class="center"> 
+										<img src="images/forecasting3.png" width="45%" height="100%"/> <!-- alt="" --> 
+	
+										</span>
+									
+								    </div>
+
+
+                                    <hr class="major" />
+
+
+                                    <h2>Requirements</h2>
+									<p>
+
+										The PV generation will be forecasted from weather data such as solar irradiance and temperature. The requirements include the assessement of both point and quantile forecasts.
+                                        <br> <strong> Point forecasts</strong> refers to a forecast of the value of a random variable at horizon h, conditional on the information
+                                        set in reference period T.
+                                        <br> In contrast to point forecasts, <strong> probabilistic forecasts</strong> aim at providing decision-makers with the full information
+                                        about potential future outcomes. Quantile forecasts help to address the uncertainty in forecasted values.
+                                        Quantiles define a prediction interval within which the actual value is likely to fall with a given probability P.
+                                        
+                                        <p>For the point forecasting, the tasks include: </p>
+
+                                        <span > 
+                                            <img src="images/forecasting9.png" class="floatRight" width="40%" height="70%"/> <!-- alt="" --> 
+        
+                                            </span>
+                                        
+
+
+
+            									
+                                        <ul> 
+                                            <li><strong>The implementation of persistent, linear regression and gradient boosting regressor (GBR) models from Python' scikit-learn library</strong></li>
+                                            <li><strong>The optimization of GBR hyperparameters </strong></li>
+                                            <li><strong>The computation of quantitative metrics such as mean absolute error (MAE) and root mean square error (RMSE)</strong></li>
+
+                                        </ul>
+
+                                        <p>For the quantile forecasting, we will : </p>
+
+            									
+                                        <ul> 
+                                            <li><strong>Implement a gradient boosting regressor (GBR) model</strong></li>
+                                            <li><strong>Optimize its hyperparameters and perform visual inspection </strong></li>
+                                            <li><strong>Compute quantitative metrics such as mean absolute error (MAE) and root mean square error (RMSE)</strong></li>
+                                            <li><strong>Build new pair of learning and testing tests</strong></li>
+
+                                        </ul>
+
+
+
+
+									<hr class="major" />
+
+									
+									<h2>Implementation & Results</h2>
+                                    <h3> Data Inspection</h3>
+									<p>
+										To begin, we conduct an inpection of the dataset to gather insights from the raw data. It is important to note that the dataset accessed in this project had been previously cleansed and preprocessed. 
+                                        The graphs below show PV generation observations (Pm) on August 2nd (and for the entire April-September period), irradiance (Ip) and temperature (Tp) data from April to September. 
+ 
+									</p>
+
+                                    <p> It can be observed that, on the date 2 August  2020, most of the solar power was generated between 6am to 6pm with the
+                                        peak around noon. Additionally, the highest irradiances and largest values of temperature were registered
+                                        during the months of July and August.</p>
+
+                                        <span class="center"> 
+                                            <img src="images/forecasting5.png" width="45%" height="80%"/> <!-- alt="" --> 
+                                            <img src="images/forecasting6.png" width="45%" height="80%"/> <!-- alt="" -->
+        
+                                            </span>
+
+                                        <span class="center"> 
+                                            <img src="images/forecasting7.png" width="45%" height="80%"/> <!-- alt="" --> 
+                                            <img src="images/forecasting8.png" width="45%" height="80%"/> <!-- alt="" -->
+                                            </span>
+
+
+                                        <h3> Point Forecasting</h3>
+                                        
+                                        <p>All the models mentioned previously have been used to train from the data and predict PV generation values prior to conducting the optimization of the GBR hyperparameters. By fine tuning these hyperparameters, we expect the model to find an
+                                            optimal model that reduces the loss function and increases the accuracy of the predictions on independent data.  </p>
+                                        <p> Our optimization method consists of varying only one hyperparameter at a time (through an iterative loop) while
+                                            keeping all the others constant. The following plots represent the evolution of the error metrics as the
+                                            hyperparameters learning rate, max-depth and n-estimators vary iteratively.</p>
+
+                                        <span class="center"> 
+                                            <img src="images/forecasting12.png" width="80%" height="100%"/> <!-- alt="" --> 
+                                            </span>
+
+                                        <p> The figure and table below provide the scores for all the learning models (Persistent, Linear Regression, Multilayer Perceptron, Gradient Boosting Regressor) under consideration, and we can conclude that, on
+                                            average, the multilayer perceptron (MLP) yields smaller NRMSE values followed by GBR, MLR and the
+                                            persistent model as the least performant model.
+                                         </p>
+
+
+
+                                         <span class="center"> 
+                                            <img src="images/forecasting10.png" width="45%" height="90%"/> <!-- alt="" --> 
+                                            </span>
+
+                                        <span class="center"> 
+                                            <img src="images/forecasting11.png" width="60%" height="100%"/> <!-- alt="" --> 
+                                            </span>
+
+
+                                        <h3> Quantile Forecasting</h3>
+
+                                        <p> Our quantile forecasting implements the Gradient Boost Regressor (GBR) model. The set of quantiles is
+                                            {q = 10%, … . . , 90% }. While the point forecast informs of the conditional expectation of values, the quantile
+                                            forecast is to be seen as a probabilistic threshold, which is forecasting at various quantiles of the forecast values for
+                                            prediction intervals instead of the mean values.</p>
+
+                                        <p> To optimize the hyperparameters of GBR quantile, we used the same method as for the GBR point hyperparameter
+                                            optimization. One hyperparameter is tuned at a time to observe the variation of the score.</p>
+
+                                        <p> When learning rate = 0.099, Max-depth = 3 and n-estimators = 81, we can obtain the smallest
+                                            value of the error score. </p>
+
+
+                                        <span class="center"> 
+                                            <img src="images/forecasting13.png" width="80%" height="100%"/> <!-- alt="" --> 
+                                            </span>
+
+                                        <p> Since the Continuous Ranked Probability Score (CRPS) can be directly compared to NMAE, the figure and the table below provide the scores for all the
+                                            learning models under consideration and one can see that the predicted intervals of GBR quantile model better
+                                            encompasses the actual realizations of the uncertainties than the other models. </p>
+
+                                    
+                                        <span class="center"> 
+                                            <img src="images/forecasting14.png" width="45%" height="90%"/> <!-- alt="" --> 
+                                            </span>
+
+                                        <span class="center"> 
+                                            <img src="images/forecasting15.png" width="60%" height="100%"/> <!-- alt="" --> 
+                                            </span>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+									
+
+								</section>
+
+						</div>
+					</div>
+
+
+
+
+
+
+
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>Stadium Sizing</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+								<header id="header">
+									<a href="index.html" class="logo"><strong>Emmanuel Anios Fils MOMPREMIER</strong></a>
+									
+                                    
+
+									<ul class="icons">
+
+										<li><a href="generic.html" class="logo"><strong>About      </strong></a></li>
+										<li><a href="index.html#project" class="logo"><strong>Projects      </strong></a></li>
+										<li><a href="resume.html" class="logo"><strong>Resume </strong></a></li>
+										<li><a href="other.html" class="logo"><strong>Other </strong></a></li>
+
+										<li><a href="#" class="logo"><strong>         </strong></a></li>
+										<li><a href= "mailto: eaniosfils21@gmail.com" class="icon communication fas fa-envelope-square"><span class="fa-envelope"></span></a></li>
+
+										<li><a href="https://www.linkedin.com/in/emmanuelafmompremier/" class="icon brands fa-linkedin"><span class="label">Linkedin</span></a></li>
+										<li><a href="https://github.com/emmanuel-mp" class="icon brands fa-github"><span class="label">Github</span></a></li>
+										<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+									
+									</ul>
+
+
+								</header>
+
+
+
+
+
+
+							<!-- Content -->
+								<section>
+									<header class="main">
+										<h2 class="center">Optimal Sizing of Microgrids: Case of the Skagerak Stadium in Norway</h2>
+									</header>
+
+
+
+
+									<ul> 
+										<li><strong>Scope:</strong> 2 months</li>
+										<li><strong>Keywords:</strong> Microgrid, Optimization, Genetic Algorithm</li>
+										<li><strong>Tools:</strong> MATLAB, Excel </li>
+										<li><strong>Other Contributors:</strong> N. Hidayati, O. Olugbayila </li>
+										<li><strong>Links:</strong> <a href="https://github.com/emmanuel-mp/optimal-sizing-stadium/tree/main"> [Github]</a> <a href="#"> [PDF]</a> </li>
+										
+									</ul>
+
+
+									<span class="center">
+										<img src="images2/stadium2.png" width="800" height="300"/> <!-- alt="" --> 
+									</span>
+
+
+
+									
+									<h1></h1>
+									<p></p>
+									<p></p>
+
+									<hr class="major" />
+
+                                    <h3> The Problem </h3>
+
+                                    <p> This project focuses on powering a football stadium with combined
+                                        Photovoltaic and Battery Energy Storage System (BESS) connected to the grid.
+
+                                        The distinct load profile of the football stadium
+                                        and the energy generation coming from PV in Norway results in a significant excess power. This situation leads to the choice to connect the system to the grid
+                                        with the main objective to sell the excess electricity produced.</p>
+
+                                    <p> The project seeks to optimize the size of each sub-system (PV panels & and battery cells), that needs to be installed. In addition to that, analysis of the yearly revenue and the
+                                        payback period will also be made while taking into account the amount of electricity sold to the
+                                        grid. The optimization is carried out using the genetic algorithm (GA) method implemented in MATLAB.</p>
+
+                                        <hr class="major" />
+
+                                        <h3> Implementation </h3>
+                                        <p> The objctive function can be mathematically modelled as:
+                                            <br> where Cost_inv is Investment Cost, P_unsup is Unsupplied power, and SOC is State of Charge of the battery
+                                        </p>
+
+
+                                        <span class="center">
+                                            <img src="images2/stadium3.png" width="50%" height="50%"/> <!-- alt="" --> 
+                                        </span>
+
+                                        <P> As the objective function is a Mixed Integer Non-Linear Programming problem, the Genetic
+                                            Algorithm is adopted to simulate and optimize the model. The simulation follows a strategy
+                                            defined by our objective function and constraints. Basically, it follows a pattern that aims to supply
+                                            all the stadium’s load demands with the PV generation, with a logic flow to trigger the use of the
+                                            battery’s energy if the PV generation is insufficient to handle the load demand at any point.</P>
+
+                                            <hr class="major" />
+
+                                            <h3> Results </h3>
+                                            <p> The optimization yields the following optimal sizing:</p>
+
+                                            
+                                            <ul> 
+                                                <li><strong>181 solar panels, 2589 battery cells are required and with an initial SOC of 62%</strong></li>
+                                                <li><strong>Total cost of the system amounts to 1.82 million € whereas the yearly revenue
+                                                    based on unused power sold to the grid reaches 1.15 million €</strong></li>
+                                                <li><strong>Approximate
+                                                    payback period lies around 19 months</strong></li>
+                                                                                        
+                                            </ul>
+
+
+                                            <span class="center">
+                                                <img src="images2/stadium4.png" width="50%" height="50%"/> <!-- alt="" --> 
+                                            </span>
+
+                                            <p> With regards to the result shown above, it is explicit that there is asynchronization between
+                                                the peak of the power generated by the photovoltaic and the power needed by the load. With 181
+                                                number of PV panels, the power that can be produced in the peak hour of around 13h is up to 15
+                                                GW. Meanwhile, the load is peaking in around 17h – 20h when the PV production is already
+                                                declining. This discrepancy results in the high amount of power lost which, in certain hour, its
+                                                amount is as high as the power generated.</p> 
+
+                                                <p>
+                                                Furthermore, in the early hours of PV generation at 7h – 9h, the generated power is
+                                                concentrated to charge the battery as shown by the yellow line going to the direction of negative
+                                                power. In this period, the generated power is stored in the battery and there is no power lost.
+                                                However, when the battery starts to be fully charged to its upper bound constraint of 95%, the
+                                                amount of power produced is not getting stored anymore and turned to be the lost power presented
+                                                by the purple line in the graph. The amount of power generated by the PV and the lost power are
+                                                then increasing to its peak before it starts decreasing, based on the solar irradiance of the hour
+                                                during the day.</p>
+
+
+
+									
+									
+
+								</section>
+
+						</div>
+					</div>
+
+
+
+
+
+
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

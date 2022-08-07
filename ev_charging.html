@@ -1,0 +1,273 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>EV Charging Station</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+								<header id="header">
+									<a href="index.html" class="logo"><strong>Emmanuel Anios Fils MOMPREMIER</strong></a>
+									
+									
+								
+									
+									<ul class="icons">
+
+										<li><a href="generic.html" class="logo"><strong>About      </strong></a></li>
+										<li><a href="index.html#project" class="logo"><strong>Projects      </strong></a></li>
+										<li><a href="resume.html" class="logo"><strong>Resume </strong></a></li>
+										<li><a href="other.html" class="logo"><strong>Other </strong></a></li>
+
+										<li><a href="#" class="logo"><strong>         </strong></a></li>
+										<li><a href= "mailto: eaniosfils21@gmail.com" class="icon communication fas fa-envelope-square"><span class="fa-envelope"></span></a></li>
+
+										<li><a href="https://www.linkedin.com/in/emmanuelafmompremier/" class="icon brands fa-linkedin"><span class="label">Linkedin</span></a></li>
+										<li><a href="https://github.com/emmanuel-mp" class="icon brands fa-github"><span class="label">Github</span></a></li>
+										<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+									
+									</ul>
+
+								</header>
+
+
+
+
+
+
+							<!-- Content -->
+								<section>
+									<header class="main">
+										<h2 class="center">Operational Planning: Strategy for Charging a Pool of Electric Vehicles</h2>
+									</header>
+
+
+
+
+									<ul> 
+										<li><strong>Scope:</strong> 1 month</li>
+										<li><strong>Keywords:</strong> Electric Vehicle, Microgrid, Charging Station, Optimization, MILP, Software Development </li>
+										<li><strong>Tools:</strong> Python, Pyomo, CBC Solver </li>
+										<li><strong>Other Contributors:</strong>  P. Losi, O. Olugbayila, Y. Li </li>
+										<li><strong>Links:</strong> <a href="https://github.com/emmanuel-mp/operational-planing-charging-pool"> [Github]</a> <a href="pdfs/Operational planning _report.pdf"> [PDF]</a> </li>
+										
+									</ul>
+
+
+									<span class="center">
+										<img src="images/ev1.png" width="900" height="500"/> <!-- alt="" --> 
+									</span>
+
+
+
+									
+									<h1></h1>
+									<p></p>
+									<p></p>
+
+									<hr class="major" />
+
+
+									<h2>The Problem</h2>
+
+
+									<div > 
+
+									
+
+									<p> 
+										In this project, my team and I intend to devise a strategy for charging a pool of electric vehicles in an industrial-like microgrid.
+                                        The electricity used in the microgrid can come from a main grid or from PV panels or from both. Additionally, there is a limit on the power that can be imported from or exported to the grid. 
+                                        The challenge is to minimize a trade-off between the costs of the electricity purchased to operate the charging station and the penalty incurred to the EV owners if their desired state of charge at departure time is not met. 
+									</p>
+
+
+									<span class="center"> 
+										<img src="images/ev2.png" width="45%" height="100%"/> <!-- alt="" --> 
+	
+										</span>
+									
+								    </div>
+
+									<hr class="major" />
+
+									<h2>Requirements</h2>
+									<p>
+
+										It is assumed that every EV has access to a charging station when it arrives at the parking. Each hour, the controller also receives a forecast of arrivals and of PV power generation for the current day.  
+                                        If technically possible, all the EVs must receive some power (i.e, the price the EVs are willing to pay is higher than the grid import price) but the desired departure state of charge should not be exceeded.
+
+                                        <p> Furthermore, the charging strategy should allocate power among EVs using a priority index that tends to favor EVs that will stay longer periods of time and have little capacity, unless the EV owner is ready to pay more for a fast charge. </p>
+                                        <br> Characteristics of each EV
+
+									</p>
+									
+									<ul> 
+										<li><strong>An uncertain arrival and departure time</strong></li>
+										<li><strong>An arrival and desired departure state of charge (SOC)</strong></li>
+										<li><strong>A battery capacity</strong></li>
+										<li><strong>A maximum charging power and a charging efficiency function of the charge power</strong>  </li>
+                                        <li><strong> The price the owner is willing to pay for the energy charged</strong></li>
+
+									</ul>
+
+
+
+									<hr class="major" />
+
+									<h2>Implementation</h2>
+									<p>
+										To design the charging station's controller, we model the problem as a MILP optimization with constraints. 
+                                        Here is an overview of the steps taken to solve the optimization problem. 
+									</p>
+
+									<h3>Defining Efficieny as a Function of Charge Power</h3>
+                                    <p> Given the variation of the state of charge of an EV per unit time as a function of the charge power, we determine the piecewise expression of charge efficiency as a function of the charge power
+                                        The figure below shows the efficiency curves for three different values of maximum charging power (3, 6, 11 kW)
+                                        used in the case study validating the controller.
+                                        The first part of the plot presents a linear variation whereas the second and third sections are clearly nonlinear.
+                                    </p>
+
+                                    <div> 
+
+                                    <span class="center">
+										 
+										<img src="images/ev4.png" width='50%'/> <!-- alt="" -->
+
+									</span>
+                                    </div>
+
+									<h3>Defining the Model and its Constraints</h3>
+                                    <p> We mathematically model an objective function to minimize cost of electricity imports from the grid, with consideration to the penalty
+                                        owed to EV owners if their desired state of charge is not met and with the willingness to maximize
+                                        revenue from selling unused PV power to the main grid. 
+                                        In addition, we included a trade-off coefficient "alpha" accounting for the system designer’s priority toward minimizing import costs,
+                                        prioritizing charging the EVs or balancing the two possibilities.  
+                                    </p>
+
+                                    
+                                    <span>
+                                        <img src="images/ev5.png" class="floatRight" width='400'/> <!-- alt="" --> 
+										
+
+									</span>
+
+                                    <p> And the described objective function is subjected to the following constraints:</p>
+
+
+                                    <ul> 
+										<li><strong>Energy Equilibrium Constraint: </strong> Energy imports from the grid and PV generation must equal
+                                            Energy used to charge the EVs plus Exports to the grid (if any)
+                                            </li>
+										<li><strong>PV Power Constraint: </strong>Balance between Forecast values of PV generation and the actual usage
+                                            from the PV panels to charge the EVs is taken into account. Any spill overs are exported to the
+                                            Grid</li>
+										<li><strong>Avoid Energy Import & Export Simultaneously</strong></li>
+										<li><strong>Penalty incurred to EV owners: </strong> This constraint is added to ensure that customer’s satisfaction
+                                            is considered whilst trying to minimize overall cost of imports from grid </li>
+                                        <li><strong> Maximum Power transfer to EVs: </strong>At every timestep, the limit of power that can be
+                                            transferred to the EVs is less or equal to its Maximum charging power</li>
+
+									</ul>
+
+                                    
+									<h3>Charging Operation Strategy</h3>
+                                    <p> The following charging operation strategy allows us to dictate how the state of charge of the EVs is
+                                        updated with respect to our knowledge of the different possible states (“Connected”, “gone” or “not yet
+                                        arrived”) and with respect to each time step of the simulation.</p>
+
+                                    <span class="center">
+                                        <img src="images/ev6.png"  width='600'/> <!-- alt="" --> 
+                                        
+
+                                    </span>                             
+
+
+
+									<hr class="major" />
+
+
+									<h2>Results</h2>
+									<p> We create a scenario with 3 EVs and the following input features for each EV </p>
+									
+                                    <span class="center">
+                                        <img src="images/ev7.png"  width='700' height='330'/> <!-- alt="" --> 
+                                        
+                                    </span>  
+
+                                    <p> Simulation was performed with a timestep of 1hour and changing values of the previously mentioned tradeoff coefficient "alpha".
+                                        <br> The following figure depicts the variation of import costs, export revenue and cost due to penalty with regard to "alpha".
+                                    </p>
+
+                                    <span class="center">
+                                        <img src="images/ev8.png"  width='500'/> <!-- alt="" --> 
+                                        
+                                    </span>  
+
+									<ul> 
+										<li><strong> Alpha between 0 and 0.04(= export price): </strong>with the this low value of the coefficient, there is no penalties for not charging the EVs;
+                                            therefore, the model prioritizes revenue from exports to the grid in order to minimize the
+                                            objective function</li>
+										<li><strong>Alpha between 0.05 and 0.3: </strong> there is no incentive to import power from the grid to satisfy the customer’s
+                                            EVs to their desired state of charge, as the model can still minimize overall cost, just from
+                                            PV exports to the grid with little penalty costs to be paid.</li>
+										<li><strong>Alpha larger than 0.3:</strong> at this value of trade-coefficient, the model prioritizes reducing the penalty
+                                            costs because satisfying the customers by matching their desired SOC with the Departure
+                                            SOC will lead to overall cost reduction, at least when compared to exports at that value of
+                                            alpha .</li>
+
+									</ul>
+
+									<p> Power Flow Results in the charging center at each time step for alpha = 0.7</p>
+
+
+									<span class="center"> 
+										<img src="images/ev9.png" width="60%" height="70%"/> <!-- alt="" --> 
+	
+										</span>
+
+                                    <p> By implementing the optimization problem as detailed above, we have continuously
+                                        adjusted the value of the trade-off coefficient coefficient from 0 up to 500, value at which we have obtained
+                                        <strong> an accuracy of 98.48% (best accuracy among 10+ teams) when called upon by a desiganted simulator.</strong>
+                                        The following figure displays the performance of our controller in terms of allocating values of EV SOC close enough to the desired
+                                        SOC. One can also see a comparison between our realized charge power distribution and the EV real
+                                        charge power.</p>
+
+
+                                        
+									<span class="center"> 
+										<img src="images/ev10.png" width="90%" height="70%"/> <!-- alt="" --> 
+	
+										</span>
+
+								</section>
+
+						</div>
+					</div>
+
+
+
+
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
